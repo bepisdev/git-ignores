@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "git-ignores"
 version = "0.1.0"
-description = ""
+description = ".gitignore generator"
 authors = ["Josh Burns <joshyburnss@gmail.com>"]
 readme = "README.md"
 packages = [{include = "git_ignores"}]
@@ -9,6 +9,8 @@ packages = [{include = "git_ignores"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 
+[tool.poetry.scripts]
+git-ignores = 'git_ignores.console:run'
 
 [build-system]
 requires = ["poetry-core"]
