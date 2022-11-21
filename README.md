@@ -14,7 +14,13 @@ script to simply append the gitignore entries instead of replacing the file whol
 
 - `--force` - Replace the .gitignore file by force with the new template.
 
-You can also run `git-ignores --help` to view the help message. Note that `git ignores --help` returns an error as git tries to load a man page when --help is called. A man-page will be shipped in a future update.
+> You can also run `git-ignores --help` to view the help message. Note that `git ignores --help` returns an error as git tries to load a man page when --help is called. A man-page will be shipped in a future update.
+
+### Example
+
+```
+$ git ignores -t Python --force
+```
 
 ## Installation
 
