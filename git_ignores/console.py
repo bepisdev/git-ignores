@@ -3,6 +3,12 @@ import json
 import requests
 from pathlib import Path
 
+def _write_to_file(filename, data):
+    """Helper method that writes data to the given file"""
+    filet = open(filename, 'w')
+    filet.write(data)
+    filet.close()
+
 @click.command()
 @click.option('--template', '-t', type=str, help='name of the gitignore template to use')
 def run(template):
@@ -12,9 +18,4 @@ def run(template):
     if req.status_code == 200:
         data = req.text
         if Path('./.gitignore').is_file():
-            print(".gitignore file already exists")
-        else:
-            f = open('./.gitignore', 'w')
-            f.write(data)
-            f.close()
-            print('done')
+            pass
