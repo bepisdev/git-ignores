@@ -1,10 +1,18 @@
 [tool.poetry]
 name = "git-ignores"
 version = "0.1.0"
-description = ".gitignore generator"
+description = ".gitignore generator built as a git plugin"
 authors = ["Josh Burns <joshyburnss@gmail.com>"]
 readme = "README.md"
 packages = [{include = "git_ignores"}]
+classifiers = [
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Topic :: Software Development :: Version Control :: Git"
+
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
