@@ -4,12 +4,6 @@ import requests
 from pathlib import Path
 from .helpers import write_to_file, append_to_file
 
-def _write_to_file(filename, data):
-    """Helper method that writes data to the given file"""
-    filet = open(filename, 'w')
-    filet.write(data)
-    filet.close()
-
 @click.command()
 @click.option('--template', '-t', type=str, help='name of the gitignore template to use')
 @click.option('--force', '-f', default=False, help='replace existing gitignore file if one exists')
@@ -29,4 +23,4 @@ def run(template, force):
                 print(".gitignore already exists, goodbye!")
                 return
         
-        _write_to_file('./.gitignore', data)
+        write_to_file('./.gitignore', data)
