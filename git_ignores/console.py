@@ -12,9 +12,9 @@ def run(template):
     if req.status_code == 200:
         data = req.text
         if Path('./.gitignore').is_file():
+            print(".gitignore file already exists")
+        else:
             f = open('./.gitignore', 'w')
             f.write(data)
             f.close()
             print('done')
-        else:
-            print(".gitignore file already")
