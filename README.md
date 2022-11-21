@@ -32,3 +32,8 @@ If you wish to contribute to the project. Here a few things to note.
 
 - Python version used in development: 3.11
 - This project uses the [Poetry](https://python-poetry.org/) build tool.
+
+## Todo
+- [ ] Tests
+- [ ] Cleanup and validate package metadata
+- [ ] Publish on PyPi
