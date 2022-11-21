@@ -2,6 +2,7 @@ import click
 import json
 import requests
 from pathlib import Path
+from .helpers import write_to_file, append_to_file
 
 def _write_to_file(filename, data):
     """Helper method that writes data to the given file"""
