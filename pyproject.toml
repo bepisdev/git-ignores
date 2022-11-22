@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "git-ignores"
-version = "0.1.0"
+version = "0.1.1"
 description = ".gitignore generator built as a git plugin"
 authors = ["Josh Burns <joshyburnss@gmail.com>"]
 readme = "README.md"
