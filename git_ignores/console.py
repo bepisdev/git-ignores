@@ -7,7 +7,7 @@ from .helpers import write_to_file, append_to_file
 @click.command()
 @click.option('--template', '-t', type=str, help='name of the gitignore template to use')
 @click.option('--force', '-f', is_flag=True, help='replace existing gitignore file if one exists')
-@click.option('--append', '-a', is_flag=True, help='replace existing gitignore file if one exists')
+@click.option('--append', '-a', is_flag=True, help='append data to existing gitignore if one exists')
 def run(template, force, append):
     """Generates a .gitignore template from githubs repo"""
     url_template = f'https://raw.githubusercontent.com/github/gitignore/main/{template}.gitignore'
