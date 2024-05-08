@@ -24,30 +24,8 @@ $ git ignores -t Python --force
 
 ## Installation
 
-### Pip
-
-Simply install the plugin via `pip`.
-
-``` 
-$ pip install git-ignores
-```
-
-### From source
-
-To install the plugin from source you will need to have [Poetry](https://python-poetry.org/) installed.
-
-1. clone the repo
-  - `$ git clone https://github.com/joshburnsxyz/git-ignores`
-2. cd into the repo 
-  - `$ cd ./git-ignores` 
-3. build wheel
-  - `$ poetry build`
-4. install wheel with pip
-  - `$ pip install ./dist/*.whl`
+__FIXME__
 
 ## Contributing
 
-If you wish to contribute to the project. Here a few things to note.
-
-- Python version used in development: 3.11
-- This project uses the [Poetry](https://python-poetry.org/) build tool.
+__FIXME__
