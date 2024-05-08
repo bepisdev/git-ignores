@@ -43,6 +43,7 @@ func main() {
 			fmt.Println(err)
 			os.Exit(1)
 		}
+		// TODO: write string(bodyBytes) to .gitignore file
 		fmt.Println(string(bodyBytes))
 	}
 	
