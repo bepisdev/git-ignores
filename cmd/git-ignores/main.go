@@ -4,6 +4,7 @@ import (
 	flag "github.com/spf13/pflag"
 	"os"
 	"io"
+	"errors"
 	"fmt"
 	"net/http"
 )
@@ -17,7 +18,6 @@ var (
 func init() {
 	flag.StringVarP(&templateNameFlag, "template", "t", "", "Gitignore template.")
 	flag.BoolVarP(&forceFlag, "force", "f", false, "Force overwrite existing .gitignore.")
-	flag.BoolVarP(&appendFlag, "append", "a", false, "Tack Gitignore template onto the end of existing .gitignore file.")
 }
 
 func main() {
@@ -43,8 +43,36 @@ func main() {
 			fmt.Println(err)
 			os.Exit(1)
 		}
-		// TODO: write string(bodyBytes) to .gitignore file
-		fmt.Println(string(bodyBytes))
+
+		// Create string from GET result
+		var gitignoreContents string = string(bodyBytes)
+
+		// Check if .gitignore exists
+		if _, err := os.Stat("./.gitignore"); err != nil {
+			if forceFlag {
+				os.Remove(".gitignore")
+				f, err := os.Create(".gitignore")
+				if err != nil {
+					panic(err)
+				}
+				defer f.Close()
+				_,err = f.WriteString(gitignoreContents)
+				if err != nil {
+					panic(err)
+				}
+			}
+		} else if errors.Is(err, os.ErrNotExist) {
+		    f, err := os.Create(".gitignore")
+		    if err != nil {
+			    panic(err)
+		    }
+		    defer f.Close()
+		    _,err = f.WriteString(gitignoreContents)
+		    if err != nil {
+			    panic(err)
+		    }
+
+		}
 	}
 	
 }
