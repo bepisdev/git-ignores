@@ -62,7 +62,7 @@ func main() {
 		gitignoreContents = string(bodyBytes)
 
 	} else {
-		fmt.Println("HTTP Request failure")
+		fmt.Println("ERROR: HTTP Request failure")
 		os.Exit(1)
 	}
 
@@ -71,10 +71,12 @@ func main() {
 		if forceFlag {
 			os.Remove(".gitignore")
 		} else {
-			fmt.Println(".gitignore already exists, use --force to overwrite")
+			fmt.Println("ERROR: .gitignore already exists, use --force to overwrite")
 			os.Exit(1)
 		}
 	} 
+
+	// Write contents to .gitignore
 	err = writeIgnoreFile(gitignoreContents)
 	if err != nil {
 		fmt.Println(err)
