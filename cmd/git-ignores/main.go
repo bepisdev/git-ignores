@@ -33,7 +33,7 @@ func writeIgnoreFile(cont string) error {
 
 }
 
-func fetchGitignoreTemplate(templateName string) (string,error) {
+func fetchGitignoreTemplate() (string,error) {
 	templateURL := fmt.Sprintf("https://raw.githubusercontent.com/github/gitignore/main/%s.gitignore", templateNameFlag)
 	res,err := http.Get(templateURL)
 	if err != nil {
@@ -61,7 +61,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	gitignoreContents, err := fetchGitignoreTemplate(templateNameFlag)
+	gitignoreContents, err := fetchGitignoreTemplate()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "ERROR: Failed to fetch template: %v\n", templateNameFlag)
 		os.Exit(1)
