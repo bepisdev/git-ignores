@@ -4,7 +4,6 @@ import (
 	flag "github.com/spf13/pflag"
 	"os"
 	"io"
-	"errors"
 	"fmt"
 	"net/http"
 )
@@ -13,11 +12,26 @@ var (
 	templateNameFlag string
 	forceFlag bool
 	appendFlag bool
+	gitignoreContents string
 )
 
 func init() {
 	flag.StringVarP(&templateNameFlag, "template", "t", "", "Gitignore template.")
 	flag.BoolVarP(&forceFlag, "force", "f", false, "Force overwrite existing .gitignore.")
+}
+
+func writeIgnoreFile(cont string) error {
+	f, err := os.Create(".gitignore")
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	_,err = f.WriteString(cont)
+	if err != nil {
+		return err
+	}
+	return nil
+
 }
 
 func main() {
@@ -45,34 +59,25 @@ func main() {
 		}
 
 		// Create string from GET result
-		var gitignoreContents string = string(bodyBytes)
+		gitignoreContents = string(bodyBytes)
 
-		// Check if .gitignore exists
-		if _, err := os.Stat("./.gitignore"); err != nil {
-			if forceFlag {
-				os.Remove(".gitignore")
-				f, err := os.Create(".gitignore")
-				if err != nil {
-					panic(err)
-				}
-				defer f.Close()
-				_,err = f.WriteString(gitignoreContents)
-				if err != nil {
-					panic(err)
-				}
-			}
-		} else if errors.Is(err, os.ErrNotExist) {
-		    f, err := os.Create(".gitignore")
-		    if err != nil {
-			    panic(err)
-		    }
-		    defer f.Close()
-		    _,err = f.WriteString(gitignoreContents)
-		    if err != nil {
-			    panic(err)
-		    }
-
-		}
+	} else {
+		fmt.Println("HTTP Request failure")
+		os.Exit(1)
 	}
-	
+
+	// Check if .gitignore exists
+	if _,err := os.Stat(".gitignore"); err == nil {
+		if forceFlag {
+			os.Remove(".gitignore")
+		} else {
+			fmt.Println(".gitignore already exists, use --force to overwrite")
+			os.Exit(1)
+		}
+	} 
+	err = writeIgnoreFile(gitignoreContents)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 }
