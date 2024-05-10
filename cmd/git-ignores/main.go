@@ -11,7 +11,6 @@ import (
 var (
 	templateNameFlag string
 	forceFlag bool
-	appendFlag bool
 	gitignoreContents string
 )
 
