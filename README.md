@@ -33,11 +33,6 @@ To use `git-ignores`, follow these simple steps:
    $ git-ignores --help
    ```
 
-## Future Enhancements
-
-- **Man-Page Integration**:
-  Currently, calling `git ignores --help` returns an error as Git tries to load a man page. A future update will include a dedicated man-page for seamless help access.
-
 ## Contributing
 
 Contributions to `git-ignores` are welcome! Whether it's bug fixes, feature enhancements, or documentation improvements, feel free to submit pull requests.
