@@ -1,5 +1,5 @@
 GOX := $(shell which go)
-PREFIX := /usr/share
+PREFIX := /usr/local
 SRC := ./cmd/git-ignores
 BIN := git-ignores
 OUTDIR := dist
