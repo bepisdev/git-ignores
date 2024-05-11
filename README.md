@@ -6,10 +6,12 @@ Git plugin that generates a .gitignore for your project based on Githubs gitigno
 
 The plugin provides a new git subcommand `ignores`. which takes the following options.
 
-- `--template` - The name of the gitignore template from 
+- `--template [NAME] ` - The name of the gitignore template from 
   [this repo](https://github.com/github/gitignore) (_i.e_ `Python` or `Javascript`)
 
 - `--force` - Replace the .gitignore file by force with the new template.
+
+- `--output [PATH]` - Write `.gitignore` to a custom path
 
 > You can also run `git-ignores --help` to view the help message. Note that `git ignores --help` returns an error as git tries to load a man page when --help is called. A man-page will be shipped in a future update.
 
