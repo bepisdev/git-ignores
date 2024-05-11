@@ -9,7 +9,8 @@ git-ignores:
 	$(GOX) build \
 		-v \
 		-x \
-		-o $(OUTDIR)/$(BIN)
+		-o $(OUTDIR)/$(BIN) \
+		$(SRC)
 
 install:
 	cp $(OUTDIR)/$(BIN) $(PREFIX)/bin/$(BIN)
