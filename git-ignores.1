@@ -1,0 +1,41 @@
+.TH GIT-IGNORES 1 "May 2024" "2.0" "gitignore - CLI tool to fetch Gitignore templates from GitHub"
+.SH NAME
+git-ignores \- CLI tool to fetch Gitignore templates from GitHub
+.SH SYNOPSIS
+.B git ignores
+[\fIOPTIONS\fR]
+.SH DESCRIPTION
+\fBgit-ignores\fR is a command-line tool that fetches Gitignore templates from GitHub and writes them to a file named .gitignore.
+.SH OPTIONS
+.TP
+\fB\-t, \-\-template \fITEMPLATE\fR
+Specify the Gitignore template to fetch. This option is required.
+.TP
+\fB\-o, \-\-output \fIPATH\fR
+Specify the path to write the .gitignore contents to. If not provided, it defaults to .gitignore in the current directory.
+.TP
+\fB\-f, \-\-force\fR
+Force overwrite an existing .gitignore file.
+.SH EXAMPLES
+Fetch a Python Gitignore template and write it to .gitignore:
+.B git ignores --template Python
+.PP
+Fetch a Node.js Gitignore template and write it to a custom location:
+.B git ignores --template Javascript --output ~/myproject/.gitignore
+.PP
+Force overwrite an existing .gitignore file:
+.B git ignores --template Go --force
+.SH SEE ALSO
+.B https://github.com/github/gitignore
+.PP
+.B https://github.com/github/gitignore
+.PP
+.SH AUTHOR
+Written by Josh Burns
+.SH REPORTING BUGS
+Report bugs to joshyburnss@gmail.com
+.SH COPYRIGHT
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH VERSION
+2.0
