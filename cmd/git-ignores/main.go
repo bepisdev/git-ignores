@@ -11,16 +11,18 @@ import (
 
 var (
 	templateName string
+	outputPath string
 	forceFlag    bool
 )
 
 func init() {
 	flag.StringVarP(&templateName, "template", "t", "", "Gitignore template.")
+	flag.StringVarP(&outputPath, "output", "o", ".gitignore", "Path to write .gitignore contents to.")
 	flag.BoolVarP(&forceFlag, "force", "f", false, "Force overwrite existing .gitignore.")
 }
 
 func writeIgnoreFile(content string) error {
-	f, err := os.Create(".gitignore")
+	f, err := os.Create(outputPath)
 	if err != nil {
 		return err
 	}
