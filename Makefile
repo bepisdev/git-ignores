@@ -17,4 +17,7 @@ install:
 clean:
 	@rm -rf $(OUTDIR)
 
-.PHONY: install clean
+test:
+	$(GOX) test ./...
+
+.PHONY: install clean test
