@@ -1,9 +1,11 @@
 GOX := $(shell which go)
 PREFIX := /usr/local
+MANPATH := ${HOME}/.local/share/man
+INSTALL_DIR := bin
 SRC := ./cmd/git-ignores
 BIN := git-ignores
 OUTDIR := dist
-MANPAGE := ./git-ignores.1
+MANPAGE := git-ignores.1
 
 git-ignores:
 	mkdir -p $(OUTDIR)
@@ -12,11 +14,12 @@ git-ignores:
 		-x \
 		-o $(OUTDIR)/$(BIN) \
 		$(SRC)
-	cp $(MANPAGE) $(OUTDIR)
 
 install:
-	cp $(OUTDIR)/$(BIN) $(PREFIX)/bin/$(BIN)
-	cp $(OUTDIR)/$(MANPAGE) $(PREFIX)/share/man/man1/$(MANPAGE)
+	@mkdir -p $(PREFIX)/$(INSTALL_DIR)
+	@mkdir -p $(MANPATH)/man1
+	install $(OUTDIR)/$(BIN) $(PREFIX)/$(INSTALL_DIR)/$(BIN)
+	install $(MANPAGE) $(MANPATH)/man1/$(MANPAGE)
 
 clean:
 	@rm -rf $(OUTDIR)
